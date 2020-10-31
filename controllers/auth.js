@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const db = require('../models')
 
 //--- SIGN UP ---
 
@@ -10,7 +11,21 @@ router.get('/signup',(req,res)=>{
 })
 
 router.post('/signup',(req,res)=>{
-    console.log('POST /auth/signup')
+    console.log('sign up form user input', req.body)
+
+    db.user.findOrCreate({
+        where: {email: req.body.email},
+        defaults: {
+            name: req.body.name,
+            password: req.body.password
+        }
+    })
+    .then(([createdUser, created])=>{
+        if(!created) console.log('An account associated with that email address already exists! Try logging in') 
+        else {
+            console.log('created following user:', createdUser)
+        }
+    })
     res.redirect('/auth/login')
 })
 
@@ -21,7 +36,7 @@ router.get('/login', (req,res)=>{
 })
 
 router.post('/login',(req,res)=>{
-    console.log('POST auth/login')
+    console.log('login form user input', req.body)
     res.redirect('/')
 })
 
