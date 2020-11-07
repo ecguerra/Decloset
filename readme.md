@@ -23,3 +23,11 @@
 
 - install & set up sequelize, pg
 - create express_auth_dev database
+- install bcrypt
+- install express-session
+- install passport
+    - create ppConfig.js in config folder
+- install passport-local
+- install connect-flash
+- create custom middleware
+

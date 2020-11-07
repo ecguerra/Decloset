@@ -6,7 +6,21 @@
     <title>Express Auth App</title>
 </head>
 <body>
-    <h3>Express Auth App</h3>
+    <header>
+        <h3>Express Auth App</h3>
+        <nav>
+            <ul>
+            <% if (!currentUser) { %>
+                <li><a href="/auth/signup">Sign Up</a></li>
+                <li><a href="/auth/login">Log in</a></li>
+            <% } else { %>
+                <li><a href="/auth/logout">Log Out</a></li>
+                <li><a href="/profile">Profile</a></li>
+            <% } %>
+            </ul>
+        </nav>
+    </header>
+    <%- include('partials/alerts.ejs') %>
     <%- body %>
 </body>
 </html>
