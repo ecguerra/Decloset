@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.clothing.belongsTo(models.user)
+      models.clothing.belongsTo(models.shelter)
+      models.clothing.belongsTo(models.category)
     }
   };
   clothing.init({

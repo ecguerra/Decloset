@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.hasMany(models.clothing)
+      models.user.belongsToMany(models.shelter, {through: 'UserShelter'})
     }
   };
   // updating attributes with sequelize validation

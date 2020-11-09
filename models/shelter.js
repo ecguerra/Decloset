@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.shelter.belongsToMany(models.user, {through: 'UserShelter'})
+      models.shelter.hasMany(models.clothing)
     }
   };
   shelter.init({
