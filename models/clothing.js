@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   clothing.init({
     userId: DataTypes.INTEGER,
-    shelterID: DataTypes.INTEGER,
+    shelterId: DataTypes.INTEGER,
     status: DataTypes.STRING,
-    category: DataTypes.STRING,
+    categoryId: DataTypes.INTEGER,
     brand: DataTypes.STRING,
     style: DataTypes.STRING,
     material: DataTypes.STRING,

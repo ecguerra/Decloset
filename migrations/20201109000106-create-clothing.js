@@ -11,14 +11,14 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      shelterID: {
+      shelterId: {
         type: Sequelize.INTEGER
       },
       status: {
         type: Sequelize.STRING
       },
-      category: {
-        type: Sequelize.STRING
+      categoryId: {
+        type: Sequelize.INTEGER
       },
       brand: {
         type: Sequelize.STRING

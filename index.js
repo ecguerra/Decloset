@@ -42,6 +42,8 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/auth',require('./controllers/auth.js'))
+app.use('/clothing',require('./controllers/clothing.js'))
+app.use('/shelters',require('./controllers/shelters.js'))
 
 app.get('/profile', isLoggedIn, (req,res) => { // add the optional middleware to specific routes
     res.render('profile.ejs') // don't have to send all the user data through because of custom middleware
