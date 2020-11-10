@@ -4,10 +4,12 @@ const URL = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi?city=B
 
 request(URL, (error, response, body) => {
     let $ = cheerio.load(body)
-    let results = $('.item_content')
+    let results = $('.listings .item_content')
     let resultNames = results.map((index,element) => {
+        let filterName = $(element).find('a').text()
+        filterName = filterName.substring(0, filterName.length - 18)
         return {
-            name: $(element).find('a').text(),
+            name: filterName,
             detail: $(element).find('a').attr('href'),
             // address: $(element).text()
         }
