@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   shelter.init({
     name: DataTypes.STRING,
+    detail: DataTypes.STRING,
     phone: DataTypes.STRING,
     website: DataTypes.STRING,
     address: DataTypes.STRING,
