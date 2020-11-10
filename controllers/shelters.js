@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
+// const request = require('request')
+// const cheerio = require('cheerio')
+// const URL = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi?city=Boston&state=MA'
 
 // GET /shelters/search
 router.get('/search',(req,res) => {
