@@ -50,5 +50,5 @@ app.get('/profile', isLoggedIn, (req,res) => { // add the optional middleware to
 })
 
 app.listen(port, ()=>{
-    console.log('Port 8000')
+    console.log('Port',port)
 })
