@@ -1,1 +1,16 @@
 <h1>Show Clothing Detail</h1>
+<a href="/clothing/edit/<%=clothing.id%>">Edit Details</a>
+
+<form action="/clothing/<%=clothing.id%>/?_method=DELETE" method="POST">
+    <input type="hidden" name="id" value="<%=clothing.id%>">
+    <input type="submit" value="Delete?">
+</form>
+
+<h2><%=clothing.style%></h2>
+
+<p><%=clothing.status%></p>
+<p><%=clothing.category.name%></p>
+<p><%=clothing.color%></p>
+<p><%=clothing.brand%></p>
+<p><%=clothing.material%></p>
+<p><%=clothing.condition%></p>

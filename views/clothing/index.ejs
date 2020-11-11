@@ -4,6 +4,10 @@
 
 <ul>
     <% clothing.forEach(clothing => { %>
-        <li><%= clothing.style %></li>
+        <li>
+            <a href="/clothing/<%= clothing.id %>">
+                <%= clothing.style %>
+            </a>
+        </li>
     <% }) %>
 </ul>

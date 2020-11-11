@@ -6,8 +6,10 @@ const session = require('express-session')
 const passport = require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn.js')
+const methodOverride = require('method-override')
 const port = process.env.PORT || 8000
 
+app.use(methodOverride('_method'))
 app.set('view engine','ejs')
 app.use(ejsLayouts)
 
