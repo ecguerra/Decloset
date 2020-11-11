@@ -14,7 +14,11 @@
     </select required>
 
     <label for="category">Clothing Type</label>
-    <input type="text" name="category" value="<%=clothing.category.name%>">
+    <input type="text" name="category" 
+    <% if(clothing.categoryId) { %>
+        value="<%=clothing.category.name%>"
+    <% } %>
+    >
 
     <label for="color">Color</label>
     <input type="text" name="color" value="<%=clothing.color%>">

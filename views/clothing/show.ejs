@@ -9,7 +9,9 @@
 <h2><%=clothing.style%></h2>
 
 <p><%=clothing.status%></p>
-<p><%=clothing.category.name%></p>
+<% if(clothing.categoryId) {%>
+    <p><%=clothing.category.name%></p>
+<% } %>
 <p><%=clothing.color%></p>
 <p><%=clothing.brand%></p>
 <p><%=clothing.material%></p>
