@@ -2,13 +2,22 @@
 
 <form method="POST" action="/auth/signup">
     <label for="new-name">Name</label>
-    <input type="text" name="name" id="new-name">
+    <input type="text" name="name" id="new-name" required>
 
     <label for="new-email">Email</label>
-    <input type="email" name="email" id="new-email">
+    <input type="email" name="email" id="new-email" required>
 
     <label for="password">Password</label>
-    <input type="password" name="password" id="new-password">
+    <input type="password" name="password" id="new-password" required>
+
+    <label for="city">City</label>
+    <input type="text" name="city" id="new-city">
+
+    <label for="state">State</label>
+    <input type="text" name="state" id="new-state">
+
+    <label for="zip">Zip Code</label>
+    <input type="text" name="zip" id="new-zip">
 
     <input type="submit" value="Sign Up">
 </form>

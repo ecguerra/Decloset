@@ -1,1 +1,9 @@
-<h1>Your Closet</h1>
+<h1>Your Clothing</h1>
+
+<a href="/clothing/new">Add New</a>
+
+<ul>
+    <% clothing.forEach(clothing => { %>
+        <li><%= clothing.style %></li>
+    <% }) %>
+</ul>
