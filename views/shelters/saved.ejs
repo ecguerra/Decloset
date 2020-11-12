@@ -1,1 +1,11 @@
 <h1>Your Saved Shelters</h1>
+
+<a href="/shelters/search">Search for Shelters</a>
+
+<ul>
+    <% shelters.forEach(shelter => { %>
+        <li>
+            <a href="/shelters/<%=shelter.detail%>"><%= shelter.name %></a>
+        </li>
+    <% }) %>
+</ul>

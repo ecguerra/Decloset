@@ -64,39 +64,43 @@ router.get('/:id',(req,res) => {
 })
 
 // POST /shelters/:id
-// router.post('/',isLoggedIn,(req,res) => {
-    // db.shelter.findOrCreate({
-    //     where: {name: req.body.name},
+router.post('/',isLoggedIn,(req,res) => {
+    db.shelter.findOrCreate({
+        where: {name: req.body.name},
 
-    //     defaults: {
-    //         userId: req.user.id,
-    //         detail: req.body.detail,
-    //         phone: req.body.phone,
-    //         address: req.body.address,
-    //         address_city: req.body.address_city,
-    //         address_state: req.body.address_state,
-    //         address_zip: req.body.address_zip
-    //     }
-    // })
-    // .then(([shelter, created])=> {
-    //     res.redirect('/shelters')
-    // })
-    // .catch(err => {
-    //     console.log(err)
-    // })
-// }
+        defaults: {
+            detail: req.body.detail,
+            phone: req.body.phone,
+            address: req.body.address,
+            address_city: req.body.address_city,
+            address_state: req.body.address_state,
+            address_zip: req.body.address_zip
+        }
+    })
+    .then(([shelter, created])=> {
+        db.user.findByPk(req.user.id)
+        .then(user => {
+            shelter.addUser(user)
+        })
+        res.redirect('/shelters')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
 
 // GET /shelters
 router.get('/',isLoggedIn, (req,res) => {
     db.user.findByPk(req.user.id)
     .then(user=> {
         user.getShelters().then(shelter => {
-            res.render('shelters/saved', {shelter: shelter})
+            res.render('shelters/saved', {shelters: shelter})
         })
     })
     .catch(err => {
         console.log(err)
     })
 })
+
 
 module.exports = router

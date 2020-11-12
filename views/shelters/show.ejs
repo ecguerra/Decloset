@@ -11,14 +11,12 @@
 <p><%=shelter[0].phone%></p>
 
 <form action="/shelters" method="POST">
-    <input type="text" name="name" value="<%=shelter[0].name%>">
-    <input type="text" name="detail" value="<%=shelter[0].detail%>">
-    <input type="text" name="phone" value="<%=shelter[0].phone%>">
-    <input type="text" name="address" value="<%=shelter[0].street%>">
-    <input type="text" name="address_city" value="<%=shelter[0].city%>">
-    <input type="text" name="address_state" value="<%=shelter[0].state%>">
-    <input type="text" name="address_zip" value="<%=shelter[0].zip%>">
+    <input type="hidden" name="name" value="<%=shelter[0].name%>">
+    <input type="hidden" name="detail" value="<%=shelter[0].detail%>">
+    <input type="hidden" name="phone" value="<%=shelter[0].phone%>">
+    <input type="hidden" name="address" value="<%=shelter[0].street%>">
+    <input type="hidden" name="address_city" value="<%=shelter[0].city%>">
+    <input type="hidden" name="address_state" value="<%=shelter[0].state%>">
+    <input type="hidden" name="address_zip" value="<%=shelter[0].zip%>">
     <input type="submit" value="Add to Saved Shelters">
 </form>
-
-<h2>Donations</h2>
