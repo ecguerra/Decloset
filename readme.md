@@ -17,3 +17,16 @@ The basic idea of this app is to help people cut down on clothing clutter and to
 - POST: Users can add pieces of clothing to their closets & shelter search results to their saved list. Shelter details also POST information for additional data scraping
 - PUT: Users can edit clothing details or tag clothing for donations
 - DELETE: Users can "Trash" clothing to delete it or remove shelters from their favorites list
+
+## To-Do
+[] build clothing/shelters functionality
+    [] Donate Clothing option/route
+    [] filter clothing results to DONATE
+    [] connect clothing and shelter
+    [] display clothing and shelter on respective pages
+[] add category filter
+[] add KEEP, DONATE, TRASH filter
+[] add isLoggedIn conditionals
+[] style
+    [] modify layouts
+    [] CSS
