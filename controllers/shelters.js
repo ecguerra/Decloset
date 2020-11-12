@@ -3,12 +3,20 @@ const router = express.Router()
 const db = require('../models')
 const request = require('request')
 const cheerio = require('cheerio')
-let URL = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi?city=Boston&state=MA'
+let URL
 const isLoggedIn = require('../middleware/isLoggedIn.js')
 
 // GET /shelters/search
 router.get('/search', (req,res) => {
     res.render('shelters/search.ejs')
+})
+
+//POST /shelters/search
+router.post('/results', (req,res) => {
+    URL = `https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi?city=${req.body.search_city}&state=${req.body.search_state}`
+    console.log(req.body.search_city)
+    console.log(req.body.search_state)
+    res.redirect('/shelters/results')
 })
 
 
@@ -41,12 +49,14 @@ router.get('/:id',(req,res) => {
             let fullDetails = $(element).find('p').text()
             let addr = fullDetails.substring(fullDetails.indexOf(':'),0)
             
-            let city = $(element).find('h3').text()
-            city = city.substring(city.lastIndexOf('-')+2,city.indexOf(','))
+            let cityState = $(element).find('h3').text()
+            city = cityState.substring(cityState.lastIndexOf('-')+2,cityState.indexOf(','))
             
             let street = addr.substring(44,addr.length-addr.indexOf(city)+4)
-            let state = addr.substring(addr.indexOf(',')+2,addr.indexOf(',')+4)
-            let zip = addr.substring(addr.indexOf(',')+5,addr.indexOf(',')+10)
+            // let state = addr.substring(addr.indexOf(',')+2,addr.indexOf(',')+4)
+            let state = cityState.substring(cityState.lastIndexOf(',')+2,cityState.length-1)
+            // let zip = addr.substring(addr.indexOf(',')+5,addr.indexOf(',')+10)
+            let zip = addr.substring(addr.indexOf(state)+3,addr.indexOf(state)+8)
             let phone = fullDetails.substring(fullDetails.indexOf('Phone:')+7,fullDetails.indexOf('Phone:')+21)          
             return {
                 name: $(element).find('h3').text(),

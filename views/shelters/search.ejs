@@ -1,3 +1,11 @@
 <h1>Search for a Shelter</h1>
 
-<form method="POST" action="/shelters/results"></form>
+<form method="POST" action="/shelters/results">
+    <label for="search_city">City</label>
+    <input type="text" name="search_city">
+
+    <label for="search_state">State</label>
+    <input type="text" name="search_state" placeholder="e.g. MA, NY, CA">
+
+    <input type="submit" value="search">
+</form>
