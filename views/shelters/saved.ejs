@@ -5,7 +5,7 @@
 <ul>
     <% shelters.forEach(shelter => { %>
         <li>
-            <a href="/shelters/<%=shelter.detail%>"><%= shelter.name %></a>
+            <a href="/shelters/details/<%=shelter.id%>"><%= shelter.name %></a>
         </li>
         <form method="POST" action="/shelters/?_method=DELETE">
             <input type="hidden" name="id" value="<%=shelter.id%>"><input type="submit" value="Remove from Saved Shelters">

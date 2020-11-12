@@ -39,8 +39,8 @@ router.get('/results',(req,res) => {
     })
 })
 
-// GET /shelters/:id
-router.get('/:id',(req,res) => {
+// GET /shelters/results/:id
+router.get('/results/:id',(req,res) => {
     let URL = `https://www.homelessshelterdirectory.org/cgi-bin/id/shelter.cgi?shelter=${req.params.id}`
     request(URL, (error, response, body) => {
         let $ = cheerio.load(body)
@@ -73,7 +73,7 @@ router.get('/:id',(req,res) => {
     })
 })
 
-// POST /shelters/:id
+// POST /shelters/results/:id
 router.post('/',isLoggedIn,(req,res) => {
     db.shelter.findOrCreate({
         where: {name: req.body.name},
@@ -103,8 +103,8 @@ router.post('/',isLoggedIn,(req,res) => {
 router.get('/',isLoggedIn, (req,res) => {
     db.user.findByPk(req.user.id)
     .then(user=> {
-        user.getShelters().then(shelter => {
-            res.render('shelters/saved', {shelters: shelter})
+        user.getShelters().then(shelters => {
+            res.render('shelters/saved', {shelters: shelters})
         })
     })
     .catch(err => {
@@ -125,5 +125,30 @@ router.delete('/', isLoggedIn, (req,res) => {
     })
 })
 
+// GET /shelters/details/:id
+router.get('/details/:id', isLoggedIn, (req,res) => {
+    db.shelter.findOne({
+        where: {id: req.params.id}
+    })
+    .then(shelter => {
+        res.render('shelters/detail', { shelter: shelter })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
+
+// DELETE /shelters/details/:id
+router.delete('/', isLoggedIn, (req,res) => {
+    db.UserShelter.destroy({
+        where: {
+            shelterId: req.body.id,
+            userId: req.user.id
+        }
+    })
+    .then(destroyed => {
+        res.redirect('/shelters')
+    })
+})
 
 module.exports = router
