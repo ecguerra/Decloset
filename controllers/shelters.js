@@ -4,6 +4,7 @@ const db = require('../models')
 const request = require('request')
 const cheerio = require('cheerio')
 let URL = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi?city=Boston&state=MA'
+const isLoggedIn = require('../middleware/isLoggedIn.js')
 
 // GET /shelters/search
 router.get('/search', (req,res) => {
@@ -39,18 +40,17 @@ router.get('/:id',(req,res) => {
         let resultDetails = results.map((index,element) => {
             let fullDetails = $(element).find('p').text()
             let addr = fullDetails.substring(fullDetails.indexOf(':'),0)
+            
             let city = $(element).find('h3').text()
-
             city = city.substring(city.lastIndexOf('-')+2,city.indexOf(','))
             
-            let street = addr.substring(0,addr.length-addr.indexOf(city)+4)
+            let street = addr.substring(44,addr.length-addr.indexOf(city)+4)
             let state = addr.substring(addr.indexOf(',')+2,addr.indexOf(',')+4)
             let zip = addr.substring(addr.indexOf(',')+5,addr.indexOf(',')+10)
             let phone = fullDetails.substring(fullDetails.indexOf('Phone:')+7,fullDetails.indexOf('Phone:')+23)          
             return {
                 name: $(element).find('h3').text(),
-                address: $(element).find('p').text(),
-                addr: addr,
+                detail: req.params.id,
                 street: street,
                 city: city,
                 state: state,
@@ -63,9 +63,40 @@ router.get('/:id',(req,res) => {
     })
 })
 
+// POST /shelters/:id
+// router.post('/',isLoggedIn,(req,res) => {
+    // db.shelter.findOrCreate({
+    //     where: {name: req.body.name},
+
+    //     defaults: {
+    //         userId: req.user.id,
+    //         detail: req.body.detail,
+    //         phone: req.body.phone,
+    //         address: req.body.address,
+    //         address_city: req.body.address_city,
+    //         address_state: req.body.address_state,
+    //         address_zip: req.body.address_zip
+    //     }
+    // })
+    // .then(([shelter, created])=> {
+    //     res.redirect('/shelters')
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // })
+// }
+
 // GET /shelters
-router.get('/',(req,res) => {
-    res.render('shelters/saved')
+router.get('/',isLoggedIn, (req,res) => {
+    db.user.findByPk(req.user.id)
+    .then(user=> {
+        user.getShelters().then(shelter => {
+            res.render('shelters/saved', {shelter: shelter})
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
 })
 
 module.exports = router
