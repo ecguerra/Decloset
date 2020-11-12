@@ -47,7 +47,7 @@ router.get('/:id',(req,res) => {
             let street = addr.substring(44,addr.length-addr.indexOf(city)+4)
             let state = addr.substring(addr.indexOf(',')+2,addr.indexOf(',')+4)
             let zip = addr.substring(addr.indexOf(',')+5,addr.indexOf(',')+10)
-            let phone = fullDetails.substring(fullDetails.indexOf('Phone:')+7,fullDetails.indexOf('Phone:')+23)          
+            let phone = fullDetails.substring(fullDetails.indexOf('Phone:')+7,fullDetails.indexOf('Phone:')+21)          
             return {
                 name: $(element).find('h3').text(),
                 detail: req.params.id,
@@ -99,6 +99,19 @@ router.get('/',isLoggedIn, (req,res) => {
     })
     .catch(err => {
         console.log(err)
+    })
+})
+
+// DELETE /shelters
+router.delete('/', isLoggedIn, (req,res) => {
+    db.UserShelter.destroy({
+        where: {
+            shelterId: req.body.id,
+            userId: req.user.id
+        }
+    })
+    .then(destroyed => {
+        res.redirect('/shelters')
     })
 })
 
