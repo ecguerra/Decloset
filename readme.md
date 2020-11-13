@@ -30,3 +30,4 @@ The basic idea of this app is to help people cut down on clothing clutter and to
 [] style
     [] modify layouts
     [] CSS
+[] write readme

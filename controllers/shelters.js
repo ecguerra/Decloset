@@ -127,15 +127,32 @@ router.delete('/', isLoggedIn, (req,res) => {
 
 // GET /shelters/details/:id
 router.get('/details/:id', isLoggedIn, (req,res) => {
-    db.shelter.findOne({
-        where: {id: req.params.id}
+    db.user.findOne({
+        where: {id: req.user.id},
+        include: [db.clothing, db.shelter]
     })
-    .then(shelter => {
-        res.render('shelters/detail', { shelter: shelter })
+    .then(user => {
+        user.getShelters({where: {id: req.params.id}}).then(shelter => {
+            console.log(shelter[0].name)
+            res.render('shelters/detail', {shelter: shelter, user: user})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     })
     .catch(err => {
         console.log(err)
     })
+
+    // db.shelter.findOne({
+    //     where: {id: req.params.id}
+    // })
+    // .then(shelter => {
+    //     res.render('shelters/detail', { shelter: shelter })
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // })
 })
 
 // DELETE /shelters/details/:id

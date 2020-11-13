@@ -45,16 +45,34 @@ router.post('/', isLoggedIn, (req,res) => {
 
 // GET /clothing/:id
 router.get('/:id', isLoggedIn, (req,res) => {
-    db.clothing.findOne({
-        where: {id: req.params.id},
-        include: [db.category, db.shelter]
+    db.user.findOne({
+        where: {id: req.user.id},
+        include: [db.clothing, db.shelter]
     })
-    .then(clothing => {
-        res.render('clothing/show', {clothing: clothing})
+    .then(user=> {
+        user.getClothings({where: {id: req.params.id}, include: [db.category, db.shelter]}).then(clothing => {
+            // console.log(clothing[0].color)
+            res.render('clothing/show', {user: user, clothing: clothing})
+        })
+        .catch(err => {
+            console.log(err)
+        })
     })
     .catch(err => {
         console.log(err)
     })
+
+// --- This works DO NOT TOUCH --- //
+    // db.clothing.findOne({
+    //     where: {id: req.params.id},
+    //     include: [db.category, db.shelter]
+    // })
+    // .then(clothing => {
+    //     res.render('clothing/show', {clothing: clothing})
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // })
 })
 
 // GET /clothing/edit/:id
@@ -113,6 +131,24 @@ router.delete('/:id', (req,res) => {
     .catch(err => {
         console.log(err)
     })
+})
+
+// POST /clothing/:id
+router.post('/:id', (req,res) => {
+    db.clothing.findByPk(req.body.clothingId)
+    .then(clothing => {
+        db.shelter.findByPk(req.body.shelterId)
+        .then(shelter => {
+            shelter.addClothing(clothing)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    })
+    .catch(err => {
+        console.log(err)
+    })
+    res.redirect(`/clothing/${req.body.clothingId}`)
 })
 
 module.exports = router

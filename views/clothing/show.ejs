@@ -1,18 +1,33 @@
 <h1>Show Clothing Detail</h1>
-<a href="/clothing/edit/<%=clothing.id%>">Edit Details</a>
+<a href="/clothing/edit/<%=clothing[0].id%>">Edit Details</a>
 
-<form action="/clothing/<%=clothing.id%>/?_method=DELETE" method="POST">
-    <input type="hidden" name="id" value="<%=clothing.id%>">
+<form action="/clothing/<%=clothing[0].id%>/?_method=DELETE" method="POST">
+    <input type="hidden" name="id" value="<%=clothing[0].id%>">
     <input type="submit" value="Delete?">
 </form>
 
-<h2><%=clothing.style%></h2>
-
-<p><%=clothing.status%></p>
-<% if(clothing.categoryId) {%>
-    <p><%=clothing.category.name%></p>
+<h2><%=clothing[0].style%></h2>
+<% if(clothing[0].categoryId) {%>
+    <p><%=clothing[0].category.name%></p>
 <% } %>
-<p><%=clothing.color%></p>
-<p><%=clothing.brand%></p>
-<p><%=clothing.material%></p>
-<p><%=clothing.condition%></p>
+<p><%=clothing[0].status%></p>
+
+<p><%=clothing[0].color%></p>
+<p><%=clothing[0].brand%></p>
+<p><%=clothing[0].material%></p>
+<p><%=clothing[0].condition%></p>
+
+<% if(clothing[0].shelterId) { %>
+    <p>Donated to: <%=clothing[0].shelter.name %></p>
+<% } %>
+
+<form action="/clothing/<%= clothing[0].id %>" method="POST">
+    <input type="hidden" name="clothingId" value="<%= clothing[0].id %>">
+    <label for="shelterId">Choose a Shelter</label>
+    <select name="shelterId" id="shelterId" required>
+    <% user.shelters.forEach(shelter => { %>
+        <option value="<%=shelter.id%>"><%= shelter.name %></option>
+    <% }) %>
+    </select>
+    <input type="submit" value="Donate this item">
+</form>

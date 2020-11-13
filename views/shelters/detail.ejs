@@ -1,17 +1,25 @@
 <h1>Shelter Detail</h1>
 
 <h2>
-    <%=shelter.name%>
+    <%=shelter[0].name%>
 </h2>
 
-<p><%=shelter.address%></p>
-<p><%=shelter.address_city%></p>
-<p><%=shelter.address_state%></p>
-<p><%=shelter.address_zip%></p>
-<p><%=shelter.phone%></p>
+<p><%=shelter[0].address%></p>
+<p><%=shelter[0].address_city%></p>
+<p><%=shelter[0].address_state%></p>
+<p><%=shelter[0].address_zip%></p>
+<p><%=shelter[0].phone%></p>
 
 <form method="POST" action="/shelters/?_method=DELETE">
-    <input type="hidden" name="id" value="<%=shelter.id%>"><input type="submit" value="Remove from Saved Shelters">
+    <input type="hidden" name="id" value="<%=shelter[0].id%>"><input type="submit" value="Remove from Saved Shelters">
 </form>
 
 <a href="/clothing">Donate Clothing to this Shelter</a>
+
+<h2>Your Donations</h2>
+<ul>
+    <% let donatedClothing = user.clothings.filter(clothing => clothing.shelterId === shelter[0].id) %>
+    <% donatedClothing.forEach(donation => { %>
+        <li><%=donation.style%></li>
+    <% }) %>
+</ul>
