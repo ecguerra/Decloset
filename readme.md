@@ -62,11 +62,11 @@ DeCloset's goal is to help people cut down on clothing clutter and to provide th
 ![Saved Shelter Detail](/Wireframe/Project_2_saved_shelter_detail.png)
 
 ## Development Plan
-[x] Backend-only with little frontend usability
-[x] Front-end functional but not styled or user-focused
-[x] Front-end styled, additional links and routes created to improve user experience (**Current Stage**)
-[] Add recycling API and more precise shelter search
-[] Allow users to interact with other users in their area and request, trade, and gift clothing
+- [x] Backend-only with little frontend usability
+- [x] Front-end functional but not styled or user-focused
+- [x] Front-end styled, additional links and routes created to improve user experience (**Current Stage**)
+- [] Add recycling API and more precise shelter search
+- [] Allow users to interact with other users in their area and request, trade, and gift clothing
 
 ## MVP
 - The majority of the app requires a login. The exceptions are the shelter search and results pages
@@ -78,12 +78,12 @@ DeCloset's goal is to help people cut down on clothing clutter and to provide th
 - The user can also see past donated items on the saved shelter detail pages
 
 ## Stretch Goals
-[] Add category filter to clothing/index
-[] Add vanilla js static file to improve the front end
-[] Allow users to upload photos of their clothing
-[] Add recycling API to offer additional options for TRASH
-[] Make shelter search more precise (shelters within a radius instead of everything in a city)
-[] Expand so that users can interact with others (post unwanted items, request other peoples' items, trade, etc)
+- [] Add category filter to clothing/index
+- [] Add vanilla js static file to improve the front end
+- [] Allow users to upload photos of their clothing
+- [] Add recycling API to offer additional options for TRASH
+- [] Make shelter search more precise (shelters within a radius instead of everything in a city)
+- [] Expand so that users can interact with others (post unwanted items, request other peoples' items, trade, etc)
 
 ## Challenges
 
