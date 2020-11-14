@@ -2,35 +2,32 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-  //   return queryInterface.bulkInsert('users', [
-  //     { name:'Ernie',
-  //       email:'ernie@sesame.org',
-  //       password:'RubberDucky123',
-  //       city:'Boston',
-  //       state:'MA',
-  //       zip:'02131',
-  //       createdAt: new Date(),
-  //       updatedAt: new Date()
-  //     },
-  //     { name:'Bert',
-  //       email:'bert@sesame.org',
-  //       password:'PaperClips456',
-  //       city:'Boston',
-  //       state:'MA',
-  //       zip:'02131',
-  //       createdAt: new Date(),
-  //       updatedAt: new Date()
-  //     },
-  //     { name:'Grover',
-  //       email:'grover@sesame.org',
-  //       password:'OverUnderThrough789',
-  //       city:'Boston',
-  //       state:'MA',
-  //       zip:'02131',
-  //       createdAt: new Date(),
-  //       updatedAt: new Date()
-  //     }
-  // ], { returning: true }).then(function(users) {
+    return queryInterface.bulkInsert('categories', [
+      { name:'cape',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      { name:'shirt',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      { name:'pants',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      },
+      { name:'shoes',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      },
+      { name:'sweater',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      },
+      { name:'helmet',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      }
+  ], { returning: true }).then(function(categories) {
     return queryInterface.bulkInsert('clothings', [
       { style: 'long-sleeve striped T-shirt',
         status: 'KEEP',
@@ -38,7 +35,8 @@ module.exports = {
         color: 'red,blue,yellow,white',
         condition: 'okay',
         brand: 'Sesame',
-        userId: 6,
+        userId: 1,
+        categoryId: categories[1].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -48,7 +46,8 @@ module.exports = {
         color: 'light blue',
         condition: 'okay',
         brand: 'Sesame',
-        userId: 6,
+        userId: 1,
+        categoryId: categories[2].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -58,7 +57,8 @@ module.exports = {
         color: 'red',
         condition: 'okay',
         brand: 'Sesame',
-        userId: 6,
+        userId: 1,
+        categoryId: categories[3].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -68,7 +68,8 @@ module.exports = {
         color: 'orange, green, navy, white',
         condition: 'like new',
         brand: 'Sesame',
-        userId: 7,
+        userId: 1,
+        categoryId: categories[4].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -78,7 +79,8 @@ module.exports = {
         color: 'green',
         condition: 'like new',
         brand: 'Sesame',
-        userId: 7,
+        userId: 1,
+        categoryId: categories[2].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -88,7 +90,8 @@ module.exports = {
         color: 'blue',
         condition: 'like new',
         brand: 'Sesame',
-        userId: 7,
+        userId: 1,
+        categoryId: categories[3].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -98,7 +101,8 @@ module.exports = {
         color: 'silver',
         condition: 'damaged',
         brand: 'Sesame',
-        userId: 8,
+        userId: 1,
+        categoryId: categories[5].id,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -108,15 +112,16 @@ module.exports = {
         color: 'pink',
         condition: 'poor',
         brand: 'Sesame',
-        userId: 8,
+        userId: 1,
+        categoryId: categories[0].id,
         createdAt: new Date(),
         updatedAt: new Date()
       }
       ]);
-    // });
+    });
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('users', null, {})
+    return queryInterface.bulkDelete('categories', null, {})
   }
 };
