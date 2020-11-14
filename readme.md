@@ -1,4 +1,4 @@
-# Clutter for a Cause
+# DeCloset
 
 ### Models
 - User
@@ -19,13 +19,13 @@ The basic idea of this app is to help people cut down on clothing clutter and to
 - DELETE: Users can "Trash" clothing to delete it or remove shelters from their favorites list
 
 ## To-Do
-[] build clothing/shelters functionality
+[x] build clothing/shelters functionality
     [x] Donate Clothing option/route
-    [] filter clothing results to DONATE
+    [x] filter clothing results to DONATE
     [x] connect clothing and shelter
     [x] display clothing and shelter on respective pages
 [] add category filter
-[] add KEEP, DONATE, TRASH filter
+[x] add KEEP, DONATE, TRASH filter
 [x] add isLoggedIn conditionals
 [] add donation conditionals (static js) STRETCH
 [x] style

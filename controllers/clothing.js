@@ -8,6 +8,12 @@ router.get('/', isLoggedIn, (req,res) => {
     db.user.findByPk(req.user.id)
     .then(user => {
         user.getClothings().then(clothing => {
+            let statusFilter = req.query.statusFilter
+            if(statusFilter!=='All') {
+                clothing = clothing.filter(clothing => {
+                    return clothing.status === statusFilter
+                })
+            }
             res.render('clothing/index.ejs', {clothing: clothing})
         })
     })

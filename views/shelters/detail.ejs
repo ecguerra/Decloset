@@ -5,7 +5,7 @@
 </div>
 <div class="mid-container">
     <div class="selection-container">
-        <a href="/clothing" class="button">Donate Clothing to this Shelter</a>
+        <a href="/clothing?statusFilter=DONATE" class="button">Donate Clothing to this Shelter</a>
         <form method="POST" action="/shelters/?_method=DELETE">
             <input type="hidden" name="id" value="<%=shelter[0].id%>"><input class="delete" type="submit" value="Remove from Saved Shelters">
         </form>

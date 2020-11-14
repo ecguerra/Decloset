@@ -1,7 +1,19 @@
 
 <div class="top-container">
     <h1>Your Clothing</h1>
-        <a href="/clothing/new" class="button">Add New</a>
+</div>
+<div class="selection-container">
+    <a href="/clothing/new" class="button">Add New</a>
+    <form action="/clothing" method="GET">
+        <label for="statusFilter">Clothing Status</label>
+        <select name="statusFilter">
+            <option value="All">---ALL---</option>
+            <option value="KEEP">KEEP</option>
+            <option value="DONATE">DONATE</option>
+            <option value="TRASH">TRASH</option>
+        </select>
+        <input type="submit" class="button" value="filter">
+    </form>
 </div>
 
 <div class="mid-container">
