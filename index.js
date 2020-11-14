@@ -7,11 +7,15 @@ const passport = require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn.js')
 const methodOverride = require('method-override')
+const { static } = require('express')
+const db = require('./models/index.js')
 const port = process.env.PORT || 8000
 
 app.use(methodOverride('_method'))
 app.set('view engine','ejs')
 app.use(ejsLayouts)
+app.use(express.static(__dirname + '/public'))
+// app.use(express.static('public'))
 
 // body parser middleware (makes req.body work)
 app.use(express.urlencoded({extended: false}))
@@ -48,7 +52,10 @@ app.use('/clothing',require('./controllers/clothing.js'))
 app.use('/shelters',require('./controllers/shelters.js'))
 
 app.get('/profile', isLoggedIn, (req,res) => { // add the optional middleware to specific routes
-    res.render('profile.ejs') // don't have to send all the user data through because of custom middleware
+    db.user.findByPk(req.user.id)
+    .then(user => {
+        res.render('profile.ejs', {user}) // don't have to send all the user data through because of custom middleware
+    })
 })
 
 app.listen(port, ()=>{

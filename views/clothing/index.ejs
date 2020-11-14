@@ -1,13 +1,13 @@
-<h1>Your Clothing</h1>
 
-<a href="/clothing/new">Add New</a>
+<div class="top-container">
+    <h1>Your Clothing</h1>
+        <a href="/clothing/new" class="button">Add New</a>
+</div>
 
-<ul>
+<div class="mid-container">
     <% clothing.forEach(clothing => { %>
-        <li>
-            <a href="/clothing/<%= clothing.id %>">
-                <%= clothing.style %>
-            </a>
-        </li>
+        <div class="list-container">
+            <a href="/clothing/<%= clothing.id %>" class="detail-button"><%= clothing.style %></a>
+        </div>  
     <% }) %>
-</ul>
+</div>

@@ -1,22 +1,30 @@
-<h1>Shelter Information</h1>
+<div class="top-container">
+    <h1><%=shelter[0].name%></h1>
+    <h2><%=shelter[0].phone%></h2>
+</div>
 
-<h2>
-    <%=shelter[0].name%>
-</h2>
+<div class="mid-container">
+    <div class="address-detail">
+        <p><%=shelter[0].street%></p>
+        <p><%=shelter[0].city%>, <%=shelter[0].state%>, <%=shelter[0].zip%></p>
+    </div>
+</div>
 
-<p><%=shelter[0].street%></p>
-<p><%=shelter[0].city%></p>
-<p><%=shelter[0].state%></p>
-<p><%=shelter[0].zip%></p>
-<p><%=shelter[0].phone%></p>
-
-<form action="/shelters" method="POST">
-    <input type="hidden" name="name" value="<%=shelter[0].name%>">
-    <input type="hidden" name="detail" value="<%=shelter[0].detail%>">
-    <input type="hidden" name="phone" value="<%=shelter[0].phone%>">
-    <input type="hidden" name="address" value="<%=shelter[0].street%>">
-    <input type="hidden" name="address_city" value="<%=shelter[0].city%>">
-    <input type="hidden" name="address_state" value="<%=shelter[0].state%>">
-    <input type="hidden" name="address_zip" value="<%=shelter[0].zip%>">
-    <input type="submit" value="Add to Saved Shelters">
-</form>
+<div class="bottom-container">
+        <% if(!currentUser ) { %>
+            <p class="center-content">
+                <a class="login-prompt" href="/auth/login">Log in</a> or <a class="login-prompt" href="/auth/signup">make an account</a> to add this shelter to your saved list!
+            </p>
+        <% } else { %>
+            <form action="/shelters" method="POST">
+                <input type="hidden" name="name" value="<%=shelter[0].name%>">
+                <input type="hidden" name="detail" value="<%=shelter[0].detail%>">
+                <input type="hidden" name="phone" value="<%=shelter[0].phone%>">
+                <input type="hidden" name="address" value="<%=shelter[0].street%>">
+                <input type="hidden" name="address_city" value="<%=shelter[0].city%>">
+                <input type="hidden" name="address_state" value="<%=shelter[0].state%>">
+                <input type="hidden" name="address_zip" value="<%=shelter[0].zip%>">
+                <input type="submit" class="button center-full" value="Add to Saved Shelters">
+            </form>
+        <% } %>
+</div>

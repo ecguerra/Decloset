@@ -20,14 +20,36 @@ The basic idea of this app is to help people cut down on clothing clutter and to
 
 ## To-Do
 [] build clothing/shelters functionality
-    [] Donate Clothing option/route
+    [x] Donate Clothing option/route
     [] filter clothing results to DONATE
-    [] connect clothing and shelter
-    [] display clothing and shelter on respective pages
+    [x] connect clothing and shelter
+    [x] display clothing and shelter on respective pages
 [] add category filter
 [] add KEEP, DONATE, TRASH filter
-[] add isLoggedIn conditionals
-[] style
-    [] modify layouts
-    [] CSS
+[x] add isLoggedIn conditionals
+[] add donation conditionals (static js) STRETCH
+[x] style
+    [x] modify layouts
+    [x] CSS
+        [x] layout
+        [x] alerts
+        [x] navbar
+        [x] home
+        [x] auth/signup
+        [x] auth/login
+        [x] profile
+        [x] clothing/index
+        [x] clothing/new
+        [x] clothing/show
+        [x] clothing/edit
+        [x] shelters/search
+        [x] shelters/results
+        [x] shelters/show
+        [x] shelters/saved
+        [x] shelters/detail
+
 [] write readme
+    [] update ERD
+    [] update wireframes
+
+[] deploy

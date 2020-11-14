@@ -14,8 +14,6 @@ router.get('/search', (req,res) => {
 //POST /shelters/search
 router.post('/results', (req,res) => {
     URL = `https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi?city=${req.body.search_city}&state=${req.body.search_state}`
-    console.log(req.body.search_city)
-    console.log(req.body.search_state)
     res.redirect('/shelters/results')
 })
 
@@ -133,7 +131,7 @@ router.get('/details/:id', isLoggedIn, (req,res) => {
     })
     .then(user => {
         user.getShelters({where: {id: req.params.id}}).then(shelter => {
-            console.log(shelter[0].name)
+            // console.log(shelter[0].name)
             res.render('shelters/detail', {shelter: shelter, user: user})
         })
         .catch(err => {

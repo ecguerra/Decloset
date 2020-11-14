@@ -52,9 +52,9 @@ router.get('/login', (req,res)=>{
 
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/auth/login', // this basically an if statement - setting up options
-    successRedirect: '/',
+    successRedirect: '/profile',
     failureFlash: 'Invalid email or password',
-    successFlash: 'You are now logged in!'
+    successFlash: 'Welcome back!'
 }))
 
 //--- LOG OUT ---

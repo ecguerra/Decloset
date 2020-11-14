@@ -1,7 +1,9 @@
 <h1>Shelter Results</h1>
 
-<% shelters.forEach(shelter => { %>
-    <div>
-        <h4><a href="/shelters/results/<%=shelter.detail%>"><%=shelter.name%></a></h4>
-    </div>
-<% }) %>
+<div class="mid-container">
+    <% shelters.forEach(shelter => { %>
+        <div class="list-container">
+            <a class="results" href="/shelters/results/<%=shelter.detail%>"><%=shelter.name%></a>
+        </div>
+    <% }) %>
+</div>

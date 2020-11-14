@@ -1,14 +1,17 @@
-<h1>Your Saved Shelters</h1>
+<div class="top-container">
+    <h1>Your Saved Shelters</h1>
+    
+    <a href="/shelters/search" class="button">Search for Shelters</a>
+</div>
 
-<a href="/shelters/search">Search for Shelters</a>
 
-<ul>
+<div class="mid-container">
     <% shelters.forEach(shelter => { %>
-        <li>
-            <a href="/shelters/details/<%=shelter.id%>"><%= shelter.name %></a>
-        </li>
-        <form method="POST" action="/shelters/?_method=DELETE">
-            <input type="hidden" name="id" value="<%=shelter.id%>"><input type="submit" value="Remove from Saved Shelters">
-        </form>
+        <div class="list-container min150">
+            <a href="/shelters/details/<%=shelter.id%>" class="detail-button"><%= shelter.name %></a>
+            <form method="POST" action="/shelters/?_method=DELETE">
+                <input type="hidden" name="id" value="<%=shelter.id%>"><input type="submit" class="delete" value="Remove from Saved Shelters">
+            </form>
+        </div>
     <% }) %>
-</ul>
+</div>

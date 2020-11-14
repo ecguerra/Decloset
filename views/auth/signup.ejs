@@ -1,6 +1,6 @@
-<h1>Create a New Closet</h1>
+<h1>Create a New DeCloset Account</h1>
 
-<form method="POST" action="/auth/signup">
+<form class="form-column" method="POST" action="/auth/signup">
     <label for="new-name">Name</label>
     <input type="text" name="name" id="new-name" required>
 
@@ -11,13 +11,13 @@
     <input type="password" name="password" id="new-password" required>
 
     <label for="city">City</label>
-    <input type="text" name="city" id="new-city">
+    <input type="text" name="city" id="new-city" required>
 
     <label for="state">State</label>
-    <input type="text" name="state" id="new-state">
+    <input type="text" name="state" id="new-state" required>
 
     <label for="zip">Zip Code</label>
-    <input type="text" name="zip" id="new-zip">
+    <input type="text" name="zip" id="new-zip" required>
 
-    <input type="submit" value="Sign Up">
+    <input class="button" type="submit" value="Sign Up">
 </form>

@@ -1,4 +1,13 @@
-<h2>Your Closet</h2>
+<h1>Your Profile</h1>
+<div class="top-container">
+    <h2><%= user.name %></h2>
+    <p><%= user.city %>, <%= user.state %> <%= user.zip %></p>
+    <p><%= user.email %></p>
+</div>
 
-<a href="/clothing">Your Clothing</a>
-<a href="/shelters">Your Saved Shelters</a>
+<div class="mid-container">
+    <div class="list-container">
+        <a href="/clothing" class="detail-button">Your Clothing</a>
+        <a href="/shelters" class="detail-button">Your Saved Shelters</a>
+    </div>
+</div>

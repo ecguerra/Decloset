@@ -1,6 +1,6 @@
 <h1>Edit Clothing Detail</h1>
 
-<form action="/clothing/<%=clothing.id%>/?_method=PUT" method="POST">
+<form class="form-column" action="/clothing/<%=clothing.id%>/?_method=PUT" method="POST">
     <input type="hidden" name="id" value="<%=clothing.id%>">
 
     <label for="style">Clothing Description</label>
@@ -32,5 +32,5 @@
     <label for="condition">Condition</label>
     <input type="text" name="condition" value="<%=clothing.condition%>">
 
-    <input type="submit" value="Update">
+    <input class="button" type="submit" value="Update">
 </form>

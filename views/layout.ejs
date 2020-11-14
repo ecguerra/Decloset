@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clutter for a Cause</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Palanquin+Dark:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>DeCloset</title>
 </head>
 <body>
-    <header>
-        <h3>Clutter for a Cause</h3>
-        <nav>
-            <ul>
-            <% if (!currentUser) { %>
-                <li><a href="/auth/signup">Sign Up</a></li>
-                <li><a href="/auth/login">Log in</a></li>
-            <% } else { %>
-                <li><a href="/auth/logout">Log Out</a></li>
-                <li><a href="/profile">Profile</a></li>
-            <% } %>
-            </ul>
-        </nav>
+    <header class="global">
+        <h2 class="logo">DeCloset</h2>
+        <%- include('partials/navbar.ejs') %>
     </header>
     <%- include('partials/alerts.ejs') %>
-    <%- body %>
+    <div class="main global">
+        <%- body %>
+    </div>
 </body>
 </html>
