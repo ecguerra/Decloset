@@ -56,7 +56,8 @@ router.get('/:id', isLoggedIn, (req,res) => {
         include: [db.clothing, db.shelter]
     })
     .then(user=> {
-        user.getClothings({where: {id: req.params.id}, include: [db.category, db.shelter]}).then(clothing => {
+        user.getClothings({where: {id: req.params.id}, include: [db.category, db.shelter]})
+        .then(clothing => {
             // console.log(clothing[0].color)
             res.render('clothing/show', {user: user, clothing: clothing})
         })
@@ -127,15 +128,27 @@ router.put('/:id', async(req,res) => {
 })
 
 // DELETE /clothing/:id
-router.delete('/:id', (req,res) => {
-    db.clothing.destroy({
-        where: {id: req.body.id}
-    })
-    .then(deleted => {
-        res.redirect('/clothing')
+router.delete('/:id', isLoggedIn, (req,res) => {
+    db.user.findByPk(req.user.id)
+    .then(user => {
+        user.getClothings({where: {id: req.params.id}, include: [db.category, db.shelter]})
+        .then(clothing => {
+            db.clothing.destroy({
+                where: {id: req.body.id}
+            })
+            .then(deleted => {
+                res.redirect('/clothing')
+            })
+            .catch(err => {
+                console.log(err)
     })
     .catch(err => {
         console.log(err)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+})
     })
 })
 

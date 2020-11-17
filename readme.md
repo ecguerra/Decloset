@@ -95,7 +95,7 @@ DeCloset's goal is to help people cut down on clothing clutter and to provide th
 - I don't want to jinx myself, but... none? Everthing appears to be working fine
 
 ## Acknowledgments
-- My General Assembly instructors Taylor, Mateen, Fatima, Khoury, and Sarah
+- My General Assembly instructors Taylor, Mateen, Fatima, Khoury, and Sarah and David for extra office hours
 - Monica and Justin for their help when I was banging my head against the wall
 - Cora and Tali for being the best furry assistants
 - Andy for still liking me even after I became a code gremlin and making sure I remember to eat
