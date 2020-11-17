@@ -1,13 +1,13 @@
 <h1>Edit Clothing Detail</h1>
 
-<form class="form-column" action="/clothing/<%=clothing.id%>/?_method=PUT" method="POST">
-    <input type="hidden" name="id" value="<%=clothing.id%>">
+<form class="form-column" action="/clothing/<%=clothing[0].id%>/?_method=PUT" method="POST">
+    <input type="hidden" name="id" value="<%=clothing[0].id%>">
 
     <label for="style">Clothing Description</label>
-    <input type="text" name="style" value="<%=clothing.style%>" required>
+    <input type="text" name="style" value="<%=clothing[0].style%>" required>
 
     <label for="status">Status</label>
-    <select name="status" value="<%=clothing.status%>">
+    <select name="status" value="<%=clothing[0].status%>">
         <option value="KEEP" selected>KEEP</option>
         <option value="DONATE">DONATE</option>
         <option value="TRASH">TRASH</option>
@@ -15,22 +15,22 @@
 
     <label for="category">Clothing Type</label>
     <input type="text" name="category" 
-    <% if(clothing.categoryId) { %>
-        value="<%=clothing.category.name%>"
+    <% if(clothing[0].categoryId) { %>
+        value="<%=clothing[0].category.name%>"
     <% } %>
     >
 
     <label for="color">Color</label>
-    <input type="text" name="color" value="<%=clothing.color%>">
+    <input type="text" name="color" value="<%=clothing[0].color%>">
 
     <label for="brand">Brand</label>
-    <input type="text" name="brand" value="<%=clothing.brand%>">
+    <input type="text" name="brand" value="<%=clothing[0].brand%>">
 
     <label for="material">Material</label>
-    <input type="text" name="material" value="<%=clothing.material%>">
+    <input type="text" name="material" value="<%=clothing[0].material%>">
 
     <label for="condition">Condition</label>
-    <input type="text" name="condition" value="<%=clothing.condition%>">
+    <input type="text" name="condition" value="<%=clothing[0].condition%>">
 
     <input class="button" type="submit" value="Update">
 </form>
