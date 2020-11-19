@@ -1,6 +1,6 @@
 # DeCloset
 
-## Demo: TBD
+## Demo: https://decloset.herokuapp.com/
 
 ## Concept
 DeCloset's goal is to help people cut down on clothing clutter and to provide them with information about local homeless shelters where they can donate unwanted items instead of just throwing them away.
@@ -100,7 +100,7 @@ DeCloset's goal is to help people cut down on clothing clutter and to provide th
 - Cora and Tali for being the best furry assistants
 - Andy for still liking me even after I became a code gremlin and making sure I remember to eat
 
-## Demo: TBA
+## Demo: https://decloset.herokuapp.com/
 
 ## Versioning & Releases
 - 11/14/20 - initial release
