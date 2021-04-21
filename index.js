@@ -7,7 +7,7 @@ const passport = require('./config/ppConfig.js')
 const flash = require('connect-flash')
 const isLoggedIn = require('./middleware/isLoggedIn.js')
 const methodOverride = require('method-override')
-const { static } = require('express')
+// const { static } = require('express')
 const db = require('./models/index.js')
 const port = process.env.PORT || 8000
 
